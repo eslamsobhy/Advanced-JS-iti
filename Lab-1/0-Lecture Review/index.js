@@ -52,3 +52,23 @@ for (key in obj) {
 // not applied! still the salary has the old value!
 obj.salary = 4800; // setter (this calls the set() method)
 console.log(obj.salary);
+
+/*
+---------------------------
+|  MORE THAN ONE PROPERTY |
+---------------------------
+*/
+
+var obj2 = {};
+
+Object.defineProperties(obj2, {
+  name: {
+    /* define the name using one of the above two ways*/
+  },
+  age: {
+    /* define the age using one of the above two ways*/
+  },
+  salary: {
+    /* define the salary using one of the above two ways*/
+  },
+});
