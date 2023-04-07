@@ -10,6 +10,7 @@ function Generator() {
         // used IIFE to create a new scope for each iteration!
         (function () {
           var tempValue = this[key];
+          console.log(this);
           Object.defineProperty(this, key, {
             get: function () {
               return tempValue;
@@ -18,7 +19,7 @@ function Generator() {
               tempValue = value;
             },
           });
-        })();
+        }.bind(this)());
       }
     }
   };
@@ -37,3 +38,23 @@ obj.title = "new title!";
 
 console.log(obj.description);
 console.log(obj.title);
+
+console.log("========================================");
+
+// Binding
+var newObject = {
+  name: "initial name",
+  age: "initial age",
+  initializeValues: function () {
+    (this.name = ""), (this.age = "");
+  },
+};
+
+obj.getSetGen.call(newObject);
+console.log(newObject);
+
+newObject.name = "new name";
+newObject.age = 25;
+
+console.log(newObject.name);
+console.log(newObject.age);
