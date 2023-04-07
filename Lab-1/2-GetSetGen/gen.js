@@ -1,22 +1,24 @@
-var dummyDescription = "initial description";
-
 function Generator() {
-  this.description = "";
+  this.description = "initial description";
+  this.title = "initial title";
+
   this.getSetGen = function () {
     for (var key in this) {
       if (typeof this[key] === "function") {
         continue;
       } else {
-        Object.defineProperty(this, key, {
-          get: function () {
-            return dummyDescription;
-          },
-          set: function (value) {
-            dummyDescription = value;
-          },
-          configurable: false,
-          enumerable: false,
-        });
+        // used IIFE to create a new scope for each iteration!
+        (function () {
+          var tempValue = this[key];
+          Object.defineProperty(this, key, {
+            get: function () {
+              return tempValue;
+            },
+            set: function (value) {
+              tempValue = value;
+            },
+          });
+        })();
       }
     }
   };
@@ -29,8 +31,9 @@ var obj = new Generator();
 // });
 
 obj.getSetGen();
-console.log(obj);
 
-obj.description = "hello";
+obj.description = "new description!";
+obj.title = "new title!";
 
 console.log(obj.description);
+console.log(obj.title);
