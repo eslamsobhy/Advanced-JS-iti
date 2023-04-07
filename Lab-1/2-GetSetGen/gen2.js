@@ -24,9 +24,30 @@ var obj = {
 };
 
 obj.getSetGen();
+console.log(obj);
 
-obj.description = "hamada";
-obj.title = 25;
+obj.description = "new description";
+obj.title = "new title";
 
 console.log(obj.description);
 console.log(obj.title);
+
+console.log("========================================");
+
+// Binding
+var newObject = {
+  name: "initial name",
+  age: "initial age",
+  initializeValues: function () {
+    (this.name = ""), (this.age = "");
+  },
+};
+
+obj.getSetGen.call(newObject);
+console.log(newObject);
+
+newObject.name = "new name";
+newObject.age = 25;
+
+console.log(newObject.name);
+console.log(newObject.age);
