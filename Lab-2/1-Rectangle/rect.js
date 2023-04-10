@@ -1,18 +1,17 @@
 function Rectangle(w, h) {
   // everytime we create an instance, the counter increases by one!
+  if (typeof Rectangle.rectCount === "undefined") {
+    Rectangle.rectCount = 0;
+  }
   Rectangle.rectCount++;
 
   this.width = w;
   this.height = h;
 }
 
-(function () {
-  Rectangle.rectCount = 0;
-
-  Rectangle.getRectCount = function () {
-    return Rectangle.rectCount;
-  };
-})();
+Rectangle.getRectCount = function () {
+  return Rectangle.rectCount;
+};
 
 Rectangle.prototype.area = function () {
   return this.width * this.height;
