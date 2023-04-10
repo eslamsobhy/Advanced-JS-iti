@@ -6,11 +6,13 @@ function Rectangle(w, h) {
   this.height = h;
 }
 
-Rectangle.rectCount = 0;
+(function () {
+  Rectangle.rectCount = 0;
 
-Rectangle.getRectCount = function () {
-  return Rectangle.rectCount;
-};
+  Rectangle.getRectCount = function () {
+    return Rectangle.rectCount;
+  };
+})();
 
 Rectangle.prototype.area = function () {
   return this.width * this.height;
