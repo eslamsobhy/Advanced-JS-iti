@@ -1,7 +1,16 @@
 function Rectangle(w, h) {
+  // everytime we create an instance, the counter increases by one!
+  Rectangle.rectCount++;
+
   this.width = w;
   this.height = h;
 }
+
+Rectangle.rectCount = 0;
+
+Rectangle.getRectCount = function () {
+  return Rectangle.rectCount;
+};
 
 Rectangle.prototype.area = function () {
   return this.width * this.height;
@@ -29,4 +38,7 @@ Rectangle.prototype.toString = function () {
 };
 
 var rectObj = new Rectangle(5, 7);
+var rectObj2 = new Rectangle(3, 1);
+var rectObj3 = new Rectangle(8, 5);
+console.log(Rectangle.getRectCount());
 rectObj.toString();
