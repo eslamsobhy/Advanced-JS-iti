@@ -26,6 +26,13 @@ Shape.prototype.perimeter = function () {
 // ------------------------------------------------
 // ------------------------------------------------
 function Rectangle(w, h) {
+  if (typeof Rectangle.rectCounter === "undefined") {
+    Rectangle.rectCounter = 0;
+  }
+  Rectangle.rectCounter++;
+  if (Rectangle.rectCounter > 1) {
+    throw "ERROR: Can't create more than one instance of the 'Rectangle' function constructor!";
+  }
   Shape.call(this, w, h);
 }
 
@@ -58,6 +65,13 @@ Rectangle.prototype.toString = function () {
 // ---------------------------------------------
 // ---------------------------------------------
 function Square(s) {
+  if (typeof Square.sqCounter === "undefined") {
+    Square.sqCounter = 0;
+  }
+  Square.sqCounter++;
+  if (Square.sqCounter > 1) {
+    throw "ERROR: Can't create more than one instance of the 'Square' function constructor!";
+  }
   this.side = s;
 }
 
@@ -93,5 +107,7 @@ Square.prototype.toString = function () {
 // const sh1 = new Shape(3, 4);
 
 const rect1 = new Rectangle(4, 3);
+// const rect2 = new Rectangle(1, 9);
 
 const sq1 = new Square(5);
+// const sq2 = new Square(15);
