@@ -19,6 +19,12 @@ Car.prototype.brake = function () {
   console.log(this.speed);
 };
 
+// adding static method
+Car.foo = function () {
+  console.log("foooooo!");
+  console.log(this); // The entire constructor
+};
+
 var car1 = new Car("BMW", 120);
 var car2 = new Car("Mercedes", 100);
 
@@ -32,3 +38,7 @@ car2.accelerate();
 car2.accelerate();
 car2.brake();
 car2.brake();
+
+// testing the static method
+// car1.foo(); // ERROR: foo is not a function, this method is not in the prototype of the object
+Car.foo(); // Now it works!

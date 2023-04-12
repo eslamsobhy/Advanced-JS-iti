@@ -25,6 +25,12 @@ class Person {
   get fullName() {
     return this._fullName;
   }
+
+  // static method
+  static hey() {
+    console.log("Hey there!");
+    console.log(this); // The entire class
+  }
 }
 
 const person1 = new Person("Ahmed Sobhy", 1995);
@@ -34,3 +40,7 @@ const person2 = new Person("Eslam Sobhy", 1999);
 // console.log(person1.age);
 console.log(person1.fullName);
 console.log(person1);
+
+// Testing the static method
+// person1.hey(); // ERROR: hey is not a function, since hey is not an instance method (not in the prototype of the object)
+Person.hey(); // Now it works!
