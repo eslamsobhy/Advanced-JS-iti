@@ -5,6 +5,9 @@
 // --------------------------------------------
 
 function Shape(w, h) {
+  if (this.__proto__.constructor === Shape) {
+    throw "ERROR: Can't make an instance from the 'Shape' function constructor!";
+  }
   this.width = w;
   this.height = h;
 }
@@ -87,7 +90,7 @@ Square.prototype.toString = function () {
 };
 
 // Instantiation
-const sh1 = new Shape(3, 4);
+// const sh1 = new Shape(3, 4);
 
 const rect1 = new Rectangle(4, 3);
 
