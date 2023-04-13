@@ -33,10 +33,12 @@ class Account {
 
   deposite(val) {
     this.#movements.push(val);
+    return this;
   }
 
   withdraw(val) {
     this.deposite(-val);
+    return this;
   }
 
   // Protected method
@@ -49,6 +51,7 @@ class Account {
     if (this.#approveLoan(val)) {
       this.deposite(val);
       console.log("Loan Accepted!");
+      return this;
     }
   }
 
@@ -66,3 +69,7 @@ console.log(acc1.getMovements());
 // console.log(#approveLoan(400)); // ERROR: Can't be accessed outside of the class
 // console.log(acc1.#movements); // ERROR: Can't be accessed outside of the class
 console.log(acc1);
+
+// testing methods chaining
+acc1.deposite(400).deposite(500).withdraw(350).requestLoan(4500).withdraw(4000);
+console.log(acc1.getMovements());
