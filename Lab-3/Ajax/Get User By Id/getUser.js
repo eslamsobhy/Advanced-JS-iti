@@ -3,6 +3,7 @@ const inputField = document.querySelector("input");
 
 function save() {
   const id = inputField.value;
+  inputField.value = "";
   //   checking if the user didn't enter a user is
   if (!id) {
     throw "ERROR: Please enter the user id!";
