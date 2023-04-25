@@ -25,6 +25,13 @@ function isFound(cookieKey) {
   return true;
 }
 
+function updateCookie(cookieKey, newValue) {
+  if (!cookieKey || !newValue)
+    throw "ERROR: Can't update the cookie without the key and the value!";
+  if (!isFound(cookieKey)) throw `ERROR: Cookie (${cookieKey}) is not found!`;
+  document.cookie = `${cookieKey}=${newValue}`;
+}
+
 function deleteCookie(cookieKey) {
   if (!cookieKey) throw `ERROR: Please enter the cookie key!`;
   if (!isFound(cookieKey)) throw `ERROR: ${cookieKey} cookie is not found!`;
@@ -42,3 +49,4 @@ console.log(getCookie("youssef"));
 console.log(isFound("age"));
 
 deleteCookie("youssef");
+updateCookie("name", "Abkar");
