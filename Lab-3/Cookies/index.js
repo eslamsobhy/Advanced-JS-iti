@@ -42,6 +42,7 @@ function deleteCookie(cookieKey) {
   document.cookie = `${cookieKey}=blah blah; expires=${expDate}`;
 }
 
+/*
 var expDate = new Date(2023, 3, 26);
 setCookie("youssef", 25);
 setCookie("name", "Eslam Sobhy", expDate);
@@ -53,3 +54,4 @@ console.log(isFound("age"));
 
 deleteCookie("youssef");
 updateCookie("name", "Abkar");
+*/
