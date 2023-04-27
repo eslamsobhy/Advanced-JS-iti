@@ -9,7 +9,8 @@ function setCookie(cookieKey, cookieValue, expDate) {
 
 function getCookie(cookieKey) {
   if (!cookieKey) throw "ERROR: Please enter the cookie key as a parameter!";
-  if (!isFound(cookieKey)) throw `ERROR: Cookie (${cookieKey}) is not found!`;
+  if (!isFound(cookieKey))
+    console.log(`ERROR: Cookie (${cookieKey}) is not found!`);
   var cookieData = document.cookie;
   var keys = cookieData.split(";");
   var cookie = keys.filter((key) => key.includes(cookieKey));
@@ -28,13 +29,15 @@ function isFound(cookieKey) {
 function updateCookie(cookieKey, newValue) {
   if (!cookieKey || !newValue)
     throw "ERROR: Can't update the cookie without the key and the value!";
-  if (!isFound(cookieKey)) throw `ERROR: Cookie (${cookieKey}) is not found!`;
+  if (!isFound(cookieKey))
+    console.log(`ERROR: Cookie (${cookieKey}) is not found!`);
   document.cookie = `${cookieKey}=${newValue}`;
 }
 
 function deleteCookie(cookieKey) {
   if (!cookieKey) throw `ERROR: Please enter the cookie key!`;
-  if (!isFound(cookieKey)) throw `ERROR: ${cookieKey} cookie is not found!`;
+  if (!isFound(cookieKey))
+    console.log(`ERROR: ${cookieKey} cookie is not found!`);
   let expDate = new Date(Date.now() - 1000 * 60 * 60 * 24);
   document.cookie = `${cookieKey}=blah blah; expires=${expDate}`;
 }
