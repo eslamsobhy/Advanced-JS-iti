@@ -1,5 +1,5 @@
-function setCookie(cookieKey, cookieValue, expDate) {
-  if (!cookieKey || !cookieValue) {
+export function setCookie(cookieKey, cookieValue, expDate) {
+  if (!cookieKey || (!cookieValue && cookieValue != 0)) {
     throw "ERROR: Can't set the cookie without the key or the value!";
   }
   document.cookie = expDate
@@ -7,7 +7,7 @@ function setCookie(cookieKey, cookieValue, expDate) {
     : `${cookieKey}=${cookieValue}`;
 }
 
-function getCookie(cookieKey) {
+export function getCookie(cookieKey) {
   if (!cookieKey) throw "ERROR: Please enter the cookie key as a parameter!";
   if (!isFound(cookieKey))
     console.log(`ERROR: Cookie (${cookieKey}) is not found!`);
@@ -26,7 +26,7 @@ function isFound(cookieKey) {
   return true;
 }
 
-function updateCookie(cookieKey, newValue) {
+export function updateCookie(cookieKey, newValue) {
   if (!cookieKey || !newValue)
     throw "ERROR: Can't update the cookie without the key and the value!";
   if (!isFound(cookieKey))
@@ -34,7 +34,7 @@ function updateCookie(cookieKey, newValue) {
   document.cookie = `${cookieKey}=${newValue}`;
 }
 
-function deleteCookie(cookieKey) {
+export function deleteCookie(cookieKey) {
   if (!cookieKey) throw `ERROR: Please enter the cookie key!`;
   if (!isFound(cookieKey))
     console.log(`ERROR: ${cookieKey} cookie is not found!`);
